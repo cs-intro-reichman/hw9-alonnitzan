@@ -76,13 +76,13 @@ public class MyTest {
 
     public static void mallocTest1() {
         MemorySpace memorySpace = new MemorySpace(100);
-        String expectedText = "(30 , 70) \n(0 , 10) (10 , 20) ";
+        String expectedText = "(0 , 100) \n";
         String expected = "true";
         String actual = "";
         try {
-            int address1 = memorySpace.malloc(10);
-            int address2 = memorySpace.malloc(20);
-            actual += (address1 == 0 && address2 == 10 && memorySpace.toString().equals(expectedText));
+            int address = memorySpace.malloc(100);
+            memorySpace.free(address);
+            actual += (memorySpace.toString().equals(expectedText));
         } catch (Exception e) {
             actual = TesterMessagesEnum.ERROR + e.getMessage();
         }

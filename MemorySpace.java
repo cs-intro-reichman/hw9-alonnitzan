@@ -76,7 +76,7 @@ public class MemorySpace {
 			return -1;
 		}
 		
-		else if (allocatedNode.block.length >= length){
+		else if (allocatedNode.block.length > length){
 			MemoryBlock newMemory = new MemoryBlock(allocatedNode.block.baseAddress, length);
 			allocatedList.addLast(newMemory);
 
