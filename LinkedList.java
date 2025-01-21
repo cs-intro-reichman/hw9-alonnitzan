@@ -285,15 +285,11 @@ public class LinkedList {
 
 		Node current = first;
 
-		if (current == null){
-			return "Empty";
-		}
-
 		while (current != null){
 			str += current + " ";
 			current = current.next;
 		}
 
-		return str.substring(0, str.length() - 1);
+		return str;
 	}
 }
