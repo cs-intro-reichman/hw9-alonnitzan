@@ -22,6 +22,6 @@ public class Node {
 	 * curly brackets. For example: {(208,10)}. 
 	 */
 	public String toString() {
-		return "{" + block + "}";
+		return "" + block;
 	}
 }
