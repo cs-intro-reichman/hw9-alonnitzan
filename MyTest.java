@@ -5,8 +5,6 @@ public class MyTest {
         //testLinkedList();
         //testMemorySpace();
 
-        //extraTest();
-        mallocTest1();
     }
 
     public static void testLinkedList(){
@@ -73,22 +71,4 @@ public class MyTest {
 
     } 
 
-
-    public static void mallocTest1() {
-        MemorySpace memorySpace = new MemorySpace(100);
-        System.out.println(memorySpace);
-        String expectedText = "(0 , 100)\n";
-        String expected = TesterMessagesEnum.ERROR + " IllegalArgumentException: index must be between 0 and size";
-        String actual = "";
-        try {
-            memorySpace.free(0);
-            actual += (memorySpace.toString().equals(expectedText));
-        } catch (IllegalArgumentException e) {
-            actual = TesterMessagesEnum.ERROR + " IllegalArgumentException: " + e.getMessage();
-        } catch (Exception e) {
-            actual = TesterMessagesEnum.ERROR + e.getMessage();
-        }
-        System.out.println(expected);
-        System.out.println(actual);
-    }
 }
