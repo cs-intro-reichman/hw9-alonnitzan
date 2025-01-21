@@ -164,7 +164,7 @@ public class LinkedList {
 		
 		if (index < 0 || index >= size) {
 			throw new IllegalArgumentException(
-					"index must be between 0 and size - 1");
+					"index must be between 0 and size");
 		}
 
 		return getNode(index).block;
@@ -202,7 +202,9 @@ public class LinkedList {
 	public void remove(Node node) {
 		
 		if (first.equals(node)){
-			first = first.next;
+			Node temp = first.next;
+			first.next = null;
+			first = temp;
 			size --;
 		}
 
