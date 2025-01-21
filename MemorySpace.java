@@ -139,9 +139,6 @@ public class MemorySpace {
 	 * In this implementation Malloc does not call defrag.
 	 */
 	public void defrag() {
-		/// TODO: Implement defrag test
-		
-		
 		Node n1 = freeList.getFirst();
 		Node found1 = null;
 		Node found2 = null;
@@ -151,16 +148,16 @@ public class MemorySpace {
 
 		while (n1 != null){
 
-			Node n2 = freeList.getFirst();
+			Node n2 = n1.next;
 
 			while (n2 != null){
 
 				if (n1.block.baseAddress + n1.block.length == n2.block.baseAddress){
-					found1 = n1;
-					found2 = n2;
+					
+					freeList.remove(n2);
+					n1.block.length = n1.block.length + n2.block.length;
 
-					n1 = null;
-					n2 = null;
+					n2 = n1;
 				}
 
 				else{
@@ -173,21 +170,6 @@ public class MemorySpace {
 			if (found1 == null && found2 == null){
 				n1 = n1.next;
 				n1Index ++;
-			}
-
-		}
-
-		if (found1 != null && found2 != null){
-
-			// which one is before int the list
-			if (n1Index < n2Index){
-				freeList.remove(found2);
-				found1.block.length = found1.block.length + found2.block.length;
-			}
-
-			else{
-				freeList.remove(found1);
-				found2.block.length = found2.block.length + found1.block.length;
 			}
 
 		}
