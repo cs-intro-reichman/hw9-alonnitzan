@@ -3,7 +3,10 @@ public class MyTest {
     public static void main (String[] args){
 
         //testLinkedList();
-        testMemorySpace();
+        //testMemorySpace();
+
+        //extraTest();
+        mallocTest1();
     }
 
     public static void testLinkedList(){
@@ -62,4 +65,29 @@ public class MyTest {
         System.out.println(m1 + "\n");
     }
 
+    public static void extraTest(){
+        MemorySpace memorySpace = new MemorySpace(100);
+        int address = memorySpace.malloc(20);
+        System.out.println(memorySpace);
+
+
+    } 
+
+
+    public static void mallocTest1() {
+        MemorySpace memorySpace = new MemorySpace(100);
+        String expectedText = "(30 , 70) \n(0 , 10) (10 , 20) ";
+        String expected = "true";
+        String actual = "";
+        try {
+            int address1 = memorySpace.malloc(10);
+            int address2 = memorySpace.malloc(20);
+            actual += (address1 == 0 && address2 == 10 && memorySpace.toString().equals(expectedText));
+        } catch (Exception e) {
+            actual = TesterMessagesEnum.ERROR + e.getMessage();
+        }
+
+        System.out.println(expected);
+        System.out.println(actual);
+    }
 }

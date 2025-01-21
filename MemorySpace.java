@@ -130,7 +130,7 @@ public class MemorySpace {
 	 * for debugging purposes.
 	 */
 	public String toString() {
-		return "Free List: " + freeList.toString() + "\n" + "Allocated list: "+ allocatedList.toString();		
+		return freeList.toString() + "\n" + allocatedList.toString();		
 	}
 	
 	/**
