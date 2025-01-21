@@ -205,6 +205,11 @@ public class LinkedList {
 			Node temp = first.next;
 			first.next = null;
 			first = temp;
+			
+			if (size == 1){
+				last = null;
+			}
+			
 			size --;
 		}
 
